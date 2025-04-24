@@ -6,6 +6,8 @@ Hey there, future SQL pro! 🎉
 
 Inside, you'll find easy-to-follow docs that cover all the essentials and beyond. I’ve made sure it’s simple, short, and super clear, so you can focus on learning and having fun with your SQL skills! 🚀💻
 
+These docs are a collaboration between me and **Grok**, that helped put everything together to make learning SQL even more effective and fun!
+
 So, what are you waiting for? Dive in, explore, and start mastering SQL from A to Z! 🚀
 
 Let’s get SQL-ing! 😄
