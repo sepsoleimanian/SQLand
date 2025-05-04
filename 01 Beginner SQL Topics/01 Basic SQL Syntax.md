@@ -16,9 +16,9 @@ FROM table_name;
 ```
 
 ### Why It’s Used in Data Analysis
-- **Extract specific data**: Analysts use `SELECT` to pull relevant columns (e.g., sales, customer names) for reports or analysis.
-- **Focus on key metrics**: Instead of retrieving entire tables, you select only the data needed, improving efficiency.
-- **Foundation for complex queries**: `SELECT` is the starting point for aggregations, joins, and filtering.
+- Analysts use `SELECT` to pull relevant columns (e.g., sales, customer names) for reports or analysis.
+- Instead of retrieving entire tables, you select only the data needed, improving efficiency.
+- `SELECT` is the starting point for aggregations, joins, and filtering.
 
 ### Real-Life Example
 Imagine you’re analyzing a retail database to create a sales report. You need only the product names and prices from a `products` table.
@@ -77,9 +77,9 @@ FROM table_name;
 ```
 
 ### Why It’s Used in Data Analysis
-- **Data source identification**: `FROM` tells SQL where to look for data, critical for querying specific datasets.
-- **Joins**: `FROM` is used to combine multiple tables (e.g., customers and orders) for comprehensive analysis.
-- **Data cleaning**: Analysts use `FROM` to access raw tables for transformation or validation.
+- `FROM` tells SQL where to look for data, critical for querying specific datasets.
+- `FROM` is used to combine multiple tables (e.g., customers and orders) for comprehensive analysis.
+- Analysts use `FROM` to access raw tables for transformation or validation.
 
 ### Real-Life Example
 You’re tasked with analyzing customer data to identify high-value clients. The `customers` table contains relevant information like names and total purchases.
@@ -116,14 +116,6 @@ Carol      | 2500.00
 - **Incorrect table names**: Misspelling or referencing non-existent tables causes errors.
 - **Ambiguous column references**: When joining tables, specify the table name (e.g., `customers.first_name`) to avoid conflicts.
 
-### Advanced Trick
-Use subqueries in `FROM` to create temporary result sets:
-```sql
-SELECT avg_purchases
-FROM (SELECT AVG(total_purchases) AS avg_purchases FROM customers) AS subquery;
-```
-This calculates the average of `total_purchases` using a subquery.
-
 ---
 
 ## 3. The `WHERE` Clause
@@ -139,9 +131,9 @@ WHERE condition;
 ```
 
 ### Why It’s Used in Data Analysis
-- **Data filtering**: `WHERE` narrows down results to relevant subsets (e.g., sales above $1000).
-- **Ad-hoc reporting**: Analysts use `WHERE` to generate targeted reports (e.g., customers in a specific region).
-- **Data cleaning**: Identify and isolate problematic rows (e.g., missing values).
+- `WHERE` narrows down results to relevant subsets (e.g., sales above $1000).
+- Analysts use `WHERE` to generate targeted reports (e.g., customers in a specific region).
+- Identify and isolate problematic rows (e.g., missing values).
 
 ### Real-Life Example
 You need to identify customers who spent more than $1000 for a loyalty program analysis.
@@ -219,34 +211,6 @@ This retrieves products with prices from $20 to $100 (inclusive).
      WHERE email IS NULL OR email = '';
      ```
    - **Why**: Isolates problematic records for correction.
-
-3. **Joining Tables**:
-   - **Scenario**: Combine customer and order data to analyze purchasing behavior.
-   - **Query**:
-     ```sql
-     SELECT c.first_name, o.order_id, o.total_amount
-     FROM customers c
-     JOIN orders o ON c.customer_id = o.customer_id
-     WHERE o.total_amount > 500;
-     ```
-   - **Why**: Links related data for deeper insights.
-
----
-
-## Practice Exercises
-
-1. **Basic Filtering**:
-   - Write a query to select all employees from an `employees` table whose salary is greater than $50,000 and who work in the 'Sales' department.
-   - **Hint**: Use `WHERE` with `AND`.
-
-2. **Column Aliasing**:
-   - From a `products` table, select `product_name` and `stock_quantity`, renaming them to `item` and `available_stock`.
-
-3. **Pattern Matching**:
-   - Query the `customers` table to find all customers whose last name starts with 'S' and who live in 'California'.
-
-4. **Advanced Filtering**:
-   - Select orders from an `orders` table where the `order_date` is in the first quarter of 2025 and the `total_amount` is between $100 and $1000.
 
 ---
 
