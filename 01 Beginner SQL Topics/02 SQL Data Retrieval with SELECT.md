@@ -25,11 +25,6 @@ LIMIT n;
 - **Limiting**: Retrieve manageable subsets of large datasets for quick insights.
 - **Data cleaning**: Identify problematic rows (e.g., missing values) or outliers.
 
-### Real-Life Example
-You’re a data analyst at a retail company tasked with generating a report of recent high-value orders, sorted by amount, and limited to the top 10 for a management presentation.
-
----
-
 ## 2. Retrieving Columns with SELECT
 
 ### 2.1 Selecting All Columns (`*`)
@@ -59,7 +54,7 @@ order_id | customer_id | order_date  | total_amount
 
 **Practical Tips**:
 - Avoid `SELECT *` in production queries to improve performance and clarity.
-- Use `DESCRIBE table_name` or equivalent to inspect columns before selecting all.
+- Use `DESCRIBE table_name` to inspect columns before selecting all.
 
 **Pitfalls**:
 - **Performance**: Retrieving unnecessary columns slows queries, especially on large tables.
@@ -87,11 +82,6 @@ order_id | total_amount | order_date
 1        | 100.50       | 2024-01-01
 2        | 250.25       | 2024-01-02
 ```
-
-**When to Use**:
-- Reporting specific metrics (e.g., sales amounts).
-- Preparing data for analysis or visualization.
-- Joining tables to avoid duplicate columns.
 
 **Practical Tips**:
 - Use aliases for clarity:
@@ -380,19 +370,6 @@ FETCH FIRST 5 ROWS ONLY;
      ```
    - **Why**: Flags records for correction.
 
-3. **Joining Tables**:
-   - **Scenario**: List high-value orders with customer names.
-   - **Query**:
-     ```sql
-     SELECT c.first_name, o.order_id, o.total_amount
-     FROM customers c
-     INNER JOIN orders o ON c.customer_id = o.customer_id
-     WHERE o.total_amount > 500
-     ORDER BY o.total_amount DESC
-     LIMIT 5;
-     ```
-   - **Why**: Combines datasets for detailed analysis.
-
 ---
 
 ## 7. Advanced Tricks and Edge Cases
@@ -442,22 +419,6 @@ ORDER BY total_amount DESC
 LIMIT 10;
 ```
 **Why**: Identifies above-average orders.
-
----
-
-## 8. Practice Exercises
-
-1. **Column Selection and Filtering**:
-   - Write a query to select `product_name` and `price` from the `products` table where `price` is greater than $100.
-
-2. **Pattern Matching**:
-   - Query the `customers` table to find customers whose `first_name` starts with 'A' and whose `email` ends with '@yahoo.com'.
-
-3. **Sorting and Limiting**:
-   - Retrieve the top 5 orders by `total_amount` from the `orders` table, sorted by `order_date` descending.
-
-4. **Complex Filtering and Joins**:
-   - Join the `customers` and `orders` tables to list `first_name`, `order_id`, and `total_amount` for orders placed in 2025 with amounts between $200 and $1000, sorted by `total_amount` descending, and limited to 10 rows.
 
 ---
 

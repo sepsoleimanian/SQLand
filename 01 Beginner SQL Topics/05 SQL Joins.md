@@ -26,8 +26,6 @@ ON table1.column = table2.column;
 ### Why It’s Used in Data Analysis
 - **Data integration**: Combine data from multiple sources (e.g., customers and orders) for holistic analysis.
 - **Reporting**: Generate comprehensive reports by linking related data (e.g., sales by customer segment).
-- **Data cleaning**: Identify missing or inconsistent data across tables.
-- **Exploratory analysis**: Uncover relationships between datasets (e.g., customer behavior and product preferences).
 
 ### Real-Life Example
 You’re a data analyst at an e-commerce company tasked with creating a report that combines customer information (e.g., names) with their order details (e.g., order amounts) to analyze purchasing patterns.
@@ -264,22 +262,6 @@ WHERE o.order_id IS NULL;
 ```
 
 **Why**: Identifies customers without orders.
-
----
-
-## 7. Practice Exercises
-
-1. **Basic INNER JOIN**:
-   - Write a query to join the `customers` and `orders` tables to list customer names and their order amounts for orders placed in 2025.
-
-2. **LEFT JOIN for Data Quality**:
-   - Query the `orders` and `products` tables to find orders with missing product information.
-
-3. **Aggregations with Joins**:
-   - Join the `customers` and `orders` tables to calculate the total order amount and number of orders per customer segment.
-
-4. **Complex Multi-Table Join**:
-   - Join the `customers`, `orders`, and `products` tables to list customer names, order IDs, and product names for orders over $100.
 
 ---
 

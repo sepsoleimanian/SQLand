@@ -22,9 +22,6 @@ WHERE condition;
 - **Reporting**: Create targeted reports (e.g., sales in specific regions).
 - **Exploratory analysis**: Filter data to uncover patterns or anomalies.
 
-### Real-Life Example
-You’re a data analyst at an e-commerce company tasked with identifying customers from certain regions with missing contact information or specific email patterns for a marketing campaign.
-
 ---
 
 ## 2. Logical Operators
@@ -333,19 +330,7 @@ Mouse        | AC1
      WHERE email IS NULL OR phone IS NULL OR email NOT LIKE '%@%.%';
      ```
    - **Why**: Flags incomplete records for data quality improvement.
-
-3. **Joining Tables**:
-   - **Scenario**: Find orders from customers with Gmail accounts placed in 2024.
-   - **Query**:
-     ```sql
-     SELECT c.first_name, o.order_id, o.total_amount
-     FROM customers c
-     INNER JOIN orders o ON c.customer_id = o.customer_id
-     WHERE c.email LIKE '%@gmail.com'
-       AND o.order_date BETWEEN '2024-01-01' AND '2024-12-31';
-     ```
-   - **Why**: Analyzes purchasing behavior of specific customer segments.
-
+   - 
 ---
 
 ## 6. Advanced Tricks and Edge Cases
@@ -382,34 +367,6 @@ FROM products
 WHERE product_name LIKE 'Sale\_%'; -- Matches "Sale_abc"
 ```
 **Why**: Handles special characters in data.
-
----
-
-### 6.4 NULLs in Logical Conditions
-`NULL` behaves uniquely in conditions:
-```sql
-SELECT first_name, total_purchases
-FROM customers
-WHERE total_purchases IS NOT NULL
-  AND total_purchases > (SELECT AVG(total_purchases) FROM customers WHERE total_purchases IS NOT NULL);
-```
-**Why**: Excludes NULLs to avoid skewing comparisons.
-
----
-
-## 7. Practice Exercises
-
-1. **Logical Operators**:
-   - Write a query to select `first_name` and `total_purchases` from the `customers` table where `total_purchases` is over $500 and the customer is not in the 'East' region.
-
-2. **NULL Handling**:
-   - Query the `customers` table to find customers with missing `email` or `phone` values.
-
-3. **Pattern Matching**:
-   - Retrieve `product_name` and `product_code` from the `products` table where `product_code` starts with 'B' followed by any two characters and ends with '9' (e.g., 'BXX9').
-
-4. **Complex Filtering with Joins**:
-   - Join the `customers` and `orders` tables to list `first_name`, `order_id`, and `total_amount` for orders where the customer’s email ends with '@yahoo.com' and the `total_amount` is greater than $200, excluding orders from 2023.
 
 ---
 

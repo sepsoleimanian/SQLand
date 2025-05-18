@@ -103,25 +103,7 @@ total_sales
 -----------
 125000.50
 ```
-
-**Use Case**: Calculate total sales by product category.
-```sql
-SELECT p.category, SUM(o.total_amount) AS category_sales
-FROM orders o
-JOIN products p ON o.product_id = p.product_id
-GROUP BY p.category;
-```
-
-**Result** (example):
-```
-category    | category_sales
-------------|---------------
-Electronics | 75000.00
-Clothing    | 30000.00
-Books       | 20000.00
-```
-
-**Tip**: Ensure the column is numeric; `SUM` on non-numeric columns causes errors.
+ **Tip**: Ensure the column is numeric; `SUM` on non-numeric columns causes errors.
 **Pitfall**: NULL values are ignored, which may skew results if not handled.
 
 ---
@@ -143,22 +125,6 @@ FROM orders;
 avg_order_value
 ---------------
 83.33
-```
-
-**Use Case**: Find the average order value by customer segment.
-```sql
-SELECT c.segment, AVG(o.total_amount) AS avg_order
-FROM customers c
-JOIN orders o ON c.customer_id = o.customer_id
-GROUP BY c.segment;
-```
-
-**Result** (example):
-```
-segment     | avg_order
-------------|----------
-Premium     | 120.50
-Standard    | 65.75
 ```
 
 **Tip**: Round results for readability:
@@ -289,18 +255,6 @@ order_date  | daily_orders
      HAVING MAX(price) > 1000;
      ```
    - **Why**: Flags potential data errors for review.
-
-3. **Joining Tables**:
-   - **Scenario**: Analyze customer purchase frequency by segment.
-   - **Query**:
-     ```sql
-     SELECT c.segment, COUNT(o.order_id) AS order_count
-     FROM customers c
-     LEFT JOIN orders o ON c.customer_id = o.customer_id
-     GROUP BY c.segment;
-     ```
-   - **Why**: Combines datasets to reveal behavioral patterns.
-
 ---
 
 ## 5. Advanced Tricks and Edge Cases
@@ -341,22 +295,6 @@ FROM customers;
 ```
 
 **Pitfall**: Combining non-aggregated columns with aggregates without `GROUP BY` causes errors.
-
----
-
-## 6. Practice Exercises
-
-1. **Basic Aggregation**:
-   - Write a query to calculate the total and average order amount from the `orders` table for orders placed in 2025.
-
-2. **Grouping**:
-   - Query the `products` table to find the number of products and the maximum price per category.
-
-3. **Filtered Aggregations**:
-   - From the `orders` table, list regions with more than 50 orders and total sales exceeding $10,000. Use `HAVING`.
-
-4. **Complex Joins and Aggregations**:
-   - Join the `customers` and `orders` tables to calculate the total number of orders and average order amount per customer segment for customers who placed orders in 2024.
 
 ---
 

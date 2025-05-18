@@ -214,6 +214,30 @@ This retrieves products with prices from $20 to $100 (inclusive).
 
 ---
 
+## Order of Execution for SELECT, FROM, and WHERE
+
+SQL processes queries in a specific order, which affects how `SELECT`, `FROM`, and `WHERE` are executed:
+
+1. **FROM**: Identifies the table(s) to retrieve data from, establishing the initial dataset.
+2. **WHERE**: Filters rows based on conditions, reducing the dataset to matching rows.
+3. **SELECT**: Retrieves specified columns from the filtered dataset, producing the final result.
+
+**Example**:
+```sql
+SELECT first_name, total_purchases
+FROM customers
+WHERE total_purchases > 1000;
+```
+
+**Execution**:
+- `FROM customers`: Accesses the `customers` table.
+- `WHERE total_purchases > 1000`: Filters rows with purchases over $1000.
+- `SELECT first_name, total_purchases`: Returns the specified columns for filtered rows.
+
+**Why It Matters**: Understanding this order helps write efficient queries and predict results, especially 
+
+---
+
 ## Conclusion
 
 Mastering `SELECT`, `FROM`, and `WHERE` is the foundation of SQL for data analysts. These clauses allow you to extract, filter, and analyze data efficiently, enabling everything from simple reports to complex data transformations. Practice these concepts with real datasets, explore edge cases like NULL handling, and combine them with other SQL features (e.g., `JOIN`, `GROUP BY`) as you advance. With these skills, you’ll be well-equipped to tackle real-world data challenges.
